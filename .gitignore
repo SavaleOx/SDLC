@@ -1,0 +1,38 @@
+# Сборка CMake
+build/
+cmake-build-*/
+CMakeCache.txt
+CMakeFiles/
+cmake_install.cmake
+Makefile
+*.o
+*.obj
+*.a
+*.so
+*.exe
+*.dll
+compile_commands.json
+
+# Qt / автогенерация moc
+*_autogen/
+moc_*.cpp
+moc_*.h
+qrc_*.cpp
+ui_*.h
+*.user
+*.user.*
+
+# IDE
+.vscode/
+.idea/
+*.swp
+*~
+
+# ОС
+.DS_Store
+Thumbs.db
+
+# Временное
+*.log
+*.tmp
+*.bak
