@@ -1,0 +1,219 @@
+@startuml 01_class
+' ============================================================
+'  Диаграмма классов утилиты «Идеальный день»
+'  Показывает MVC-разделение, структуры данных и утилиты.
+' ============================================================
+
+skinparam classAttributeIconSize 0
+skinparam classFontStyle bold
+skinparam packageStyle rectangle
+skinparam shadowing false
+
+skinparam class {
+    BackgroundColor #FEFECE
+    BorderColor #A80036
+    ArrowColor #333333
+    FontColor #1B1F23
+}
+
+skinparam package {
+    BackgroundColor #F5F5F5
+    BorderColor #999999
+    FontColor #1B1F23
+}
+
+skinparam stereotypeCBackgroundColor #DDEBF7
+skinparam stereotypeCBorderColor #4FC3F7
+
+' ============================================================
+'  VIEW
+' ============================================================
+package "View (Qt Widgets)" as ViewPkg {
+
+    class MainWindow <<QMainWindow>> {
+        - inputButton : QPushButton
+        - wakeUpLabel : QLabel
+        - sleepLabel : QLabel
+        - workLabel : QLabel
+        - restLabel : QLabel
+        - scoreLabel : QLabel
+        - verdictLabel : QLabel
+        - problemsLabel : QLabel
+        - adviceLabel : QLabel
+        - idealScheduleLabel : QLabel
+        - m_controller : DayController*
+        --
+        + MainWindow(QWidget* parent = nullptr)
+        + ~MainWindow()
+        + setController(DayController* controller)
+        --
+        + {signal} inputRequested()
+        --
+        - setupUI()
+        - displaySchedule(const DaySchedule& s)
+        - displayAnalysis(const DayAnalysis& a)
+        - clearDisplay()
+        --
+        - {slot} onInputButtonClicked()
+        - {slot} onModelScheduleChanged(const DaySchedule& s)
+        - {slot} onModelAnalysisChanged(const DayAnalysis& a)
+    }
+
+    class InputDialog <<QDialog>> {
+        - wakeUpEdit : QTimeEdit*
+        - sleepEdit : QTimeEdit*
+        - workStartEdit : QTimeEdit*
+        - workEndEdit : QTimeEdit*
+        - restStartEdit : QTimeEdit*
+        - restEndEdit : QTimeEdit*
+        - errorLabel : QLabel*
+        - buttons : QDialogButtonBox*
+        --
+        + InputDialog(QWidget* parent = nullptr)
+        + setSchedule(const DaySchedule& s)
+        + schedule() : DaySchedule
+        --
+        - setupUI()
+        - {slot} onAccept()
+    }
+}
+
+' ============================================================
+'  CONTROLLER
+' ============================================================
+package "Controller" as CtrlPkg {
+
+    class DayController <<QObject>> {
+        - m_view : MainWindow*
+        - m_model : DayModel*
+        --
+        + DayController(MainWindow* view,
+        +               DayModel* model,
+        +               QObject* parent = nullptr)
+        + model() : DayModel*
+        --
+        + {slot} onInputRequested()
+    }
+}
+
+' ============================================================
+'  MODEL
+' ============================================================
+package "Model" as ModelPkg {
+
+    class DayModel <<QObject>> {
+        - m_schedule : DaySchedule
+        - m_analysis : DayAnalysis
+        - m_hasData : bool
+        --
+        + DayModel(QObject* parent = nullptr)
+        + schedule() : const DaySchedule&
+        + analysis() : const DayAnalysis&
+        + hasData() : bool
+        --
+        + {slot} setSchedule(const DaySchedule& s)
+        + {slot} clear()
+        --
+        + {signal} scheduleChanged(const DaySchedule& s)
+        + {signal} analysisChanged(const DayAnalysis& a)
+        + {signal} dataCleared()
+        --
+        - analyze()
+        - buildIdealSchedule() : DaySchedule
+        - validateInput(QString& error) : bool
+        - {static} validateSchedule(const DaySchedule& s,
+        -                           QString& error) : bool
+    }
+}
+
+' ============================================================
+'  DATA (чистые структуры)
+' ============================================================
+package "Data" as DataPkg {
+
+    struct DaySchedule <<struct>> {
+        + wakeUp : QTime
+        + sleep : QTime
+        + workStart : QTime
+        + workEnd : QTime
+        + restStart : QTime
+        + restEnd : QTime
+    }
+
+    struct DayAnalysis <<struct>> {
+        + valid : bool
+        + score : double
+        + verdict : QString
+        + problems : QStringList
+        + advice : QStringList
+        + idealSchedule : DaySchedule
+    }
+}
+
+' ============================================================
+'  UTILITIES
+' ============================================================
+package "Utilities" as UtilPkg {
+
+    class IntervalUtils <<namespace>> {
+        {static} + intervalMinutes(QTime start, QTime end) : int
+        {static} + splitInterval(QTime start, QTime end) : QVector<QPair<int,int>>
+        {static} + intervalsOverlap(QTime a1, QTime a2,
+        {static} +                  QTime b1, QTime b2) : bool
+        {static} + minutesToTime(int minutes) : QTime
+        {static} + timeToMinutes(const QTime& t) : int
+        {static} + plateau(double x, double lo, double hi,
+        {static} +           double soft) : double
+        {static} + lerp(double x, double x0, double y0,
+        {static} +        double x1, double y1) : double
+    }
+}
+
+' ============================================================
+'  СВЯЗИ
+' ============================================================
+
+' --- MVC ---
+MainWindow "1" --> "1" DayController : использует >
+DayController "1" --> "1" DayModel : управляет >
+DayController ..> InputDialog : создаёт >
+
+' --- View зависит от структур данных, но не от модели ---
+MainWindow ..> DaySchedule : отображает >
+MainWindow ..> DayAnalysis : отображает >
+InputDialog ..> DaySchedule : возвращает >
+
+' --- Model композиционно владеет структурами ---
+DayModel *-- "1" DaySchedule
+DayModel *-- "1" DayAnalysis
+DayAnalysis *-- "1" DaySchedule
+
+' --- Утилиты ---
+DayModel ..> IntervalUtils : использует >
+MainWindow ..> IntervalUtils : использует >
+InputDialog ..> IntervalUtils : использует >
+
+' ============================================================
+'  ЗАМЕТКИ
+' ============================================================
+note right of MainWindow
+  View НЕ знает про DayModel.
+  Общается с моделью только
+  через сигналы, которые
+  пробрасывает Controller.
+end note
+
+note bottom of DayModel
+  Активная модель:
+  1) emit scheduleChanged
+  2) analyze()
+  3) emit analysisChanged
+end note
+
+note right of DaySchedule
+  Чистая структура без QObject.
+  Используется во View, Controller
+  и Model одновременно.
+end note
+
+@enduml
