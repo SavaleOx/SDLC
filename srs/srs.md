@@ -82,7 +82,7 @@ HabitRabbit — десктопное приложение для создани�
 | [srs.md](https://github.com/SavaleOx/SDLC/tree/lab3/srs/srs.md) | Спецификация требований StarForge Clicker | Текущий документ |
 | [ui-model.sysml](https://github.com/SavaleOx/SDLC/tree/lab3/srs/ui-model.sysml) | Структурная модель интерфейса на SysML v2 | Файл в наличии |
 | [img/mockup-main.png](https://github.com/SavaleOx/SDLC/tree/lab3/srs/img/mockup-main.png) | Мокап главного экрана | Файл в наличии |
-| [img/mockup-habit-dialogs.png](https://github.com/SavaleOx/SDLC/tree/lab3/srs/img/mockup-habit-dialogs.png) | Мокап диалога создания привычки | Файл в наличии |
+| [img/mockup-habit-dialog.png](https://github.com/SavaleOx/SDLC/tree/lab3/srs/img/mockup-habit-dialog.png) | Мокап диалога создания привычки | Файл в наличии |
 | [img/mockup-statistics.png](https://github.com/SavaleOx/SDLC/tree/lab3/srs/img/mockup-statistics.png) | Мокап вкладки статистики | Файл в наличии |
 | [Репозиторий GitHub](https://github.com/SavaleOx/SDLC) | Исходный код, документация и история изменений | https://github.com/SavaleOx/SDLC |
 | [Qt 6 Documentation](https://doc.qt.io/qt-6/) | Справочная документация фреймворка Qt | https://doc.qt.io/qt-6/ |
@@ -151,7 +151,7 @@ HabitRabbit является самостоятельным десктопным
 
 Интерфейс должен визуально различать состояния выполнения привычек, включая выполненное, невыполненное и отсутствие заданного статуса. Названия команд и видимые элементы должны быть согласованы с фактической локализацией приложения.
 
-Визуальные ориентиры хранятся в [img/mockup-main.png](https://github.com/SavaleOx/SDLC/tree/lab3/srs/img/mockup-main.png), [img/mockup-habit-dialogs.png](https://github.com/SavaleOx/SDLC/tree/lab3/srs/img/mockup-habit-dialogs.png) и [img/mockup-statistics.png](https://github.com/SavaleOx/SDLC/tree/lab3/srs/img/mockup-statistics.png). Структурная модель интерфейса хранится в [ui-model.sysml](https://github.com/SavaleOx/SDLC/tree/lab3/srs/ui-model.sysml).
+Визуальные ориентиры хранятся в [img/mockup-main.png](https://github.com/SavaleOx/SDLC/tree/lab3/srs/img/mockup-main.png), [img/mockup-habit-dialog.png](https://github.com/SavaleOx/SDLC/tree/lab3/srs/img/mockup-habit-dialog.png) и [img/mockup-statistics.png](https://github.com/SavaleOx/SDLC/tree/lab3/srs/img/mockup-statistics.png). Структурная модель интерфейса хранится в [ui-model.sysml](https://github.com/SavaleOx/SDLC/tree/lab3/srs/ui-model.sysml).
 
 **REQ-INT-001 — Отображение главного окна**
 
@@ -513,7 +513,7 @@ HabitRabbit предназначен для локального использ�
 | Requirement ID | Метод проверки | Тест/артефакт | Статус | Доказательство |
 |---|---|---|---|---|
 | REQ-INT-001 | Demonstration, Inspection | Главное окно и таблица привычек; мокап[img/mockup-main.png](https://github.com/SavaleOx/SDLC/tree/lab3/srs/img/mockup-main.png)| Не проверено | Добавить скриншот или результат демонстрации |
-| REQ-INT-002 | Demonstration, Inspection | Диалог добавления привычки; мокап[img/mockup-habit-dialogs.png](https://github.com/SavaleOx/SDLC/tree/lab3/srs/img/mockup-habit-dialogs.png) | Не проверено | Скриншот формы и проверка доступности полей |
+| REQ-INT-002 | Demonstration, Inspection | Диалог добавления привычки; мокап[img/mockup-habit-dialog.png](https://github.com/SavaleOx/SDLC/tree/lab3/srs/img/mockup-habit-dialog.png) | Не проверено | Скриншот формы и проверка доступности полей |
 | REQ-INT-003 | Demonstration, Test | Диалог пользовательского повторения | Не проверено | Записать результат настройки и возврата в форму |
 | REQ-INT-004 | Demonstration, Inspection | Окно статистики; мокап[img/mockup-statistics.png](https://github.com/SavaleOx/SDLC/tree/lab3/srs/img/mockup-statistics.png) | Не проверено | Скриншоты доступных графиков |
 | REQ-INT-005 | Demonstration, Inspection | Диалог настроек | Не проверено | Скриншот открытого диалога |
@@ -567,7 +567,7 @@ HabitRabbit предназначен для локального использ�
 Пути мокапов в репозитории:
 
 - Главный экран: [img/mockup-main.png](https://github.com/SavaleOx/SDLC/tree/lab3/srs/img/mockup-main.png)
-- Диалог создания привычки: [img/mockup-habit-dialogs.png](https://github.com/SavaleOx/SDLC/tree/lab3/srs/img/mockup-habit-dialogs.png)
+- Диалог создания привычки: [img/mockup-habit-dialog.png](https://github.com/SavaleOx/SDLC/tree/lab3/srs/img/mockup-habit-dialog.png)
 - Статистика: [img/mockup-statistics.png](https://github.com/SavaleOx/SDLC/tree/lab3/srs/img/mockup-statistics.png)
 
 ### 5.2 Структурная модель интерфейса
