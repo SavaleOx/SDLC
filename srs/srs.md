@@ -75,9 +75,19 @@ HabitRabbit — десктопное приложение для создани�
 - **JKQTPlotter6** — C++ библиотека для визуализации данных, построения графиков и диаграмм
 
 ### 1.4 Источники
-1. Методические указания к лабораторной работе № 3-1 и файл `srs-template.md`, предоставленные пользователем.
-2. Репозиторий `https://github.com/Ellain121/HabitTracker`, архив `HabitTracker-main.zip`, предоставленный пользователем.
-3. `README.md`, `CMakeLists.txt`, `MainWindow.cpp`, `HabitDialog.cpp`, `StatsDialog.cpp` и каталог `app_core` из архива.
+
+| Документ/ресурс | Назначение | Статус |
+|---|---|---|
+| [srs-template.md](https://github.com/SavaleOx/SDLC/tree/lab3/srs/srs-template.md) | Структура документа SRS | Шаблон проекта |
+| [srs.md](https://github.com/SavaleOx/SDLC/tree/lab3/srs/srs.md) | Спецификация требований StarForge Clicker | Текущий документ |
+| [ui-model.sysml](https://github.com/SavaleOx/SDLC/tree/lab3/srs/ui-model.sysml) | Структурная модель интерфейса на SysML v2 | Файл в наличии |
+| [img/mockup-main.png](https://github.com/SavaleOx/SDLC/tree/lab3/srs/img/mockup-main.png) | Мокап главного экрана | Файл в наличии |
+| [img/mockup-habit-dialogs.png](https://github.com/SavaleOx/SDLC/tree/lab3/srs/img/mockup-habit-dialogs.png) | Мокап диалога создания привычки | Файл в наличии |
+| [img/mockup-statistics.png](https://github.com/SavaleOx/SDLC/tree/lab3/srs/img/mockup-statistics.png) | Мокап вкладки статистики | Файл в наличии |
+| [Репозиторий GitHub](https://github.com/SavaleOx/SDLC) | Исходный код, документация и история изменений | https://github.com/SavaleOx/SDLC |
+| [Qt 6 Documentation](https://doc.qt.io/qt-6/) | Справочная документация фреймворка Qt | https://doc.qt.io/qt-6/ |
+| [CMake Documentation](https://cmake.org/documentation/) | Справочная документация CMake | https://cmake.org/documentation/ |
+| [SQLite Documentation](https://sqlite.org/docs.html) | Справочная документация SQLite | https://sqlite.org/docs.html |
 
 ### 1.5 Обзор документа
 
@@ -557,8 +567,8 @@ HabitRabbit предназначен для локального использ�
 Пути мокапов в репозитории:
 
 - Главный экран: [img/mockup-main.png](https://github.com/SavaleOx/SDLC/tree/lab3/srs/img/mockup-main.png)
-- Магазин улучшений: [img/mockup-habit-dialogs.png](https://github.com/SavaleOx/SDLC/tree/lab3/srs/img/mockup-habit-dialogs.png)
-- Достижения: [img/mockup-statistics.png](https://github.com/SavaleOx/SDLC/tree/lab3/srs/img/mockup-statistics.png)
+- Диалог создания привычки: [img/mockup-habit-dialogs.png](https://github.com/SavaleOx/SDLC/tree/lab3/srs/img/mockup-habit-dialogs.png)
+- Статистика: [img/mockup-statistics.png](https://github.com/SavaleOx/SDLC/tree/lab3/srs/img/mockup-statistics.png)
 
 ### 5.2 Структурная модель интерфейса
 
@@ -568,7 +578,7 @@ HabitRabbit предназначен для локального использ�
 
 | ID | Критерий | Целевое значение | Как проверяется |
 |---|---|---|---|
-| SC-1 | Средняя длительность сессии у тестовых gjkmpjdfntktq | Не менее 10 минут | Наблюдение/опрос тестовой группы |
+| SC-1 | Средняя длительность сессии у тестовых пользователей | Не менее 10 минут | Наблюдение/опрос тестовой группы |
 | SC-2 | Доля тестовых игроков, получивших стрик не менее трёх дней | Не менее 70 % | Анализ результатов тестирования |
 | SC-3 | Время запуска приложения | Не более 3 секунд на согласованном окружении | Измерение времени запуска |
 | SC-4 | Потеря прогресса после штатного закрытия | 0 случаев в согласованной серии тестов | Повторные тесты сохранения |
