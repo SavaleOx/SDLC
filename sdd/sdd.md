@@ -139,7 +139,7 @@ _01.11.2026_
 - **Title**: Контекст системы
 - **Viewpoint**: Context
 - **Реализует требования**: REQ-INT-001…REQ-INT-006, REQ-AVAIL-001, REQ-AVAIL-002
-- **Решения**: [ADR-0001](../adr/0001-cpp-qt-desktop.md)
+- **Решения**: [ADR-0001](../adr/0001-qt-6-desktop.md)
 
 ```mermaid
 flowchart LR
@@ -171,7 +171,7 @@ flowchart LR
 - **Title**: Состав системы
 - **Viewpoint**: Composition
 - **Реализует требования**: REQ-MAINT-001, REQ-MAINT-002, REQ-MAINT-003, REQ-PORT-001
-- **Решения**: [ADR-0002](../adr/0002-mvc-active-model-observer.md)
+- **Решения**: [ADR-0002](../adr/0002-mvc-signals-slots.md)
 
 ```mermaid
 flowchart TB
@@ -226,7 +226,7 @@ flowchart TB
 - **Title**: Логическая структура классов
 - **Viewpoint**: Logical
 - **Реализует требования**: REQ-FUNC-001…REQ-FUNC-015
-- **Решения**: [ADR-0002](../adr/0002-mvc-active-model-observer.md)
+- **Решения**: [ADR-0002](../adr/0002-mvc-signals-slots.md)
 
 ```mermaid
 classDiagram
@@ -313,7 +313,7 @@ flowchart LR
 - **Title**: Данные сохранения
 - **Viewpoint**: Information
 - **Реализует требования**: REQ-FUNC-010, REQ-FUNC-011, REQ-REL-001, REQ-SEC-001
-- **Решения**: [ADR-0003](../adr/0003-sqlite-persistence.md)
+- **Решения**: [ADR-0003](../adr/0003-local-storage.md)
 
 Файл `habits.db` (SQLite, драйвер QSQLITE). Схема:
 
@@ -446,7 +446,7 @@ stateDiagram-v2
 - **Title**: Политика потоков
 - **Viewpoint**: Concurrency
 - **Реализует требования**: REQ-PERF-001, REQ-PERF-002
-- **Решения**: [ADR-0004](../adr/0004-single-thread-qt.md)
+- **Решения**: [ADR-0004](../adr/0004-single-thread.md)
 
 | Активность | Поток | Механизм |
 |---|---|---|
@@ -475,7 +475,7 @@ stateDiagram-v2
 - **Title**: Развёртывание
 - **Viewpoint**: Deployment
 - **Реализует требования**: REQ-BUILD-001, REQ-PORT-001, REQ-PORT-002
-- **Решения**: [ADR-0001](../adr/0001-cpp-qt-desktop.md)
+- **Решения**: [ADR-0001](../adr/0001-qt-6-desktop.md)
 
 ```mermaid
 flowchart LR
@@ -507,11 +507,11 @@ flowchart LR
 
 | ID | Название | Статус |
 |---|---|---|
-| ADR-0001 | [C++20 и Qt 6 Widgets для десктопного клиента](../adr/0001-cpp-qt-desktop.md) | принято |
-| ADR-0002 | [MVC с активной моделью и сигналами/слотами Qt](../adr/0002-mvc-active-model-observer.md) | принято |
-| ADR-0003 | [Локальное сохранение в SQLite через QSQLITE](../adr/0003-sqlite-persistence.md) | принято |
-| ADR-0004 | [Однопоточная работа с БД и интерфейсом в главном потоке Qt](../adr/0004-single-thread-qt.md) | принято |
-| ADR-0005 | [Уведомления через системный трей с деградацией без трея](../adr/0005-system-tray-notifications.md) | принято |
+| ADR-0001 | [C++20 и Qt 6 Widgets для десктопного клиента](../adr/0001-qt-6-desktop.md) | принято |
+| ADR-0002 | [MVC с активной моделью и сигналами/слотами Qt](../adr/0002-mvc-signals-slots.md) | принято |
+| ADR-0003 | [Локальное сохранение в SQLite через QSQLITE](../adr/0003-local-storage.md) | принято |
+| ADR-0004 | [Однопоточная работа с БД и интерфейсом в главном потоке Qt](../adr/0004-single-thread.md) | принято |
+| ADR-0005 | [Уведомления через системный трей с деградацией без трея](../adr/0005-notifications.md) | принято |
 
 ---
 
